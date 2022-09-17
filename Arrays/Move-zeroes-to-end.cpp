@@ -5,13 +5,15 @@ using namespace std;
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-        int nonZeroIndex = 0, j = 0;
-        while(nonZeroIndex < nums.size()){
-            if(nums[nonZeroIndex]){
-                swap(nums[nonZeroIndex], nums[j]);
-                j++;
+        int zeroAt = 0;
+        for(int nonZeroAt = 0; nonZeroAt < nums.size(); nonZeroAt++){
+            if(nums[nonZeroAt]){
+                if(nonZeroAt != zeroAt){
+                    nums[zeroAt] = nums[nonZeroAt];
+                    nums[nonZeroAt] = 0;
+                }
+                zeroAt++;
             }
-            nonZeroIndex++;
         }
     }
 };

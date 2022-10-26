@@ -22,3 +22,20 @@ public:
         return ans;
     }
 };
+
+// Recursive Solution
+class Solution {
+public:
+    double myPow(double x, int n) {
+        int64_t y = n;
+        if(n == 0)
+            return 1;
+        else if(n < 0){
+            x = 1 / x;
+            y = -y;
+        }
+
+        double res = myPow(x, y / 2);
+        return (n & 1) ? res * res * x : res * res;
+    }
+};
